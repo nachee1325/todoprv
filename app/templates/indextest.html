@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+	<form>
+		<label>Task: </label>
+			<input type="text" name="txt_task">
+			<label>Description: </label> 
+			<input type="text" name="txt_description">
+			<label>Due:</label>
+			<input type="date" name="due_date">
+			<a href="#" id="add_task"><button>ADD</button></a>
+	</form>
+	
+	<p id = "result"></p>
+	<table>
+		<td>
+			<tr>
+				<td></td>
+			</tr>
+		</td>
+
+	</table>
+	
+</div>
+{%endblock%}

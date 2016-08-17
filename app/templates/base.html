@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- 		<script type="text/javascript">
+			
+		$(document).ready(function () {
+			data = $.getJSON('/_populate_table')
+			for(var i = 0 ; i < data.length ; i++){
+				tr = $('<tr/>');
+				tr.append('<td>' + data[i].task +'</td>')
+				tr.append('<td>' + data[i].due +'</td>')
+				tr.append('<td>' + data[i].desc +'</td>')
+				$("#result").append(tr);
+				}
+		});
+
+		</script>
+ -->
+		<script type="text/javascript">
+			$(function() {
+				$('a#add_task').bind('click', function(){
+					$.getJSON('/_add_task',{task: $('input[name = "txt_task"]').val(), description: $('input[name = "txt_description"]').val(), due: $('input[name = "due_date"]').val()}, function(data) {
+						$("#executeTable").text(data.result);
+						for(var i = 0 ; i < data.result.length ; i++){
+							tr = $('<tr/>');
+							tr.append('<td>' + data.result[i].task +'</td>')
+							tr.append('<td>' + data.result[i].due +'</td>')
+						$("table").append(tr);
+						}
+						});
+					return false;
+				});
+			});
+
+			$(function() {
+				$('a#edit_task').bind('click', function(){
+					$.getJSON('/_edit_task',{task: $('input[name = "txt_task"]').val(), description: $('input[name = "txt_description"]').val(), due: $('input[name = "due_date"]').val()}, function(data) {
+					});
+					return false;
+				});
+			});
+
+
+		</script>
+
+		<title>to-do-list</title>
+	</head>
+
+	<body>
+		<h1>THE BEST WEBSITE EVERMADE</h1>
+		{% block content %}{% endblock %}
+	</body>
+</html>
